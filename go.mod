@@ -4,9 +4,9 @@ go 1.25.0
 
 require (
 	github.com/IBM/sarama v1.45.1
-	github.com/kamalyes/go-casbin v0.0.0-20260513071529-b67c4efbc554
-	github.com/kamalyes/go-logger v0.4.6
-	github.com/kamalyes/go-toolbox v0.12.0
+	github.com/kamalyes/go-casbin v0.1.0
+	github.com/kamalyes/go-logger v0.5.0
+	github.com/kamalyes/go-toolbox v0.15.0
 )
 
 require (
@@ -23,7 +23,7 @@ require (
 	github.com/jcmturner/gofork v1.7.6 // indirect
 	github.com/jcmturner/gokrb5/v8 v8.4.4 // indirect
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
-	github.com/kamalyes/go-jsonpath v0.0.0-20260129163507-0b67ed48bb28 // indirect
+	github.com/kamalyes/go-argus v0.1.0 // indirect
 	github.com/klauspost/compress v1.17.11 // indirect
 	github.com/pierrec/lz4/v4 v4.1.22 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 // indirect
