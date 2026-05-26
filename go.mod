@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/IBM/sarama v1.45.1
-	github.com/kamalyes/go-casbin v0.1.0
+	github.com/kamalyes/go-casbin v0.1.2
 	github.com/kamalyes/go-logger v0.5.0
 	github.com/kamalyes/go-toolbox v0.15.0
 )
