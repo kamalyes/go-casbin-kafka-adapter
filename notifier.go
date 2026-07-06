@@ -45,10 +45,14 @@ type KafkaNotifier struct {
 	idgen    idgen.IDGenerator      // ID 生成器
 	retry    *retry.Retry           // 发布重试器
 
-	mu      sync.RWMutex              // 保护以下字段
-	running bool                      // 是否正在运行
-	cancel  context.CancelFunc        // 取消消费的函数
-	handler policy.ChangeEventHandler // 事件处理函数
+	mu           sync.RWMutex              // 保护以下字段
+	running      bool                      // 是否正在运行
+	cancel       context.CancelFunc        // 取消消费的函数
+	handler      policy.ChangeEventHandler // 事件处理函数
+	eventCh      chan *ChangeEvent         // 事件缓冲队列，ConsumeClaim 非阻塞投递
+	workerCtx    context.Context           // 事件处理循环 context
+	workerCancel context.CancelFunc        // 事件处理循环取消函数
+	wg           sync.WaitGroup            // 等待事件处理循环退出
 }
 
 // NewKafkaNotifier 创建 Kafka 通知器
@@ -91,6 +95,8 @@ func NewKafkaNotifier(kafkaConfig *KafkaConfig, opts ...policy.NotifierOption) (
 		return nil, errors.NewPolicyAdapterFailedError("failed to create kafka consumer group: " + err.Error())
 	}
 
+	workerCtx, workerCancel := context.WithCancel(context.Background())
+
 	return &KafkaNotifier{
 		producer: producer,
 		consumer: consumer,
@@ -100,6 +106,9 @@ func NewKafkaNotifier(kafkaConfig *KafkaConfig, opts ...policy.NotifierOption) (
 		retry: retry.NewRetry().
 			SetAttemptCount(config.RetryCount).
 			SetInterval(config.RetryInterval),
+		eventCh:      make(chan *ChangeEvent, 128),
+		workerCtx:    workerCtx,
+		workerCancel: workerCancel,
 	}, nil
 }
 
