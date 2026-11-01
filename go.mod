@@ -6,7 +6,7 @@ require (
 	github.com/IBM/sarama v1.60.1
 	github.com/kamalyes/go-casbin v0.2.4
 	github.com/kamalyes/go-logger v0.9.0
-	github.com/kamalyes/go-toolbox v0.19.0
+	github.com/kamalyes/go-toolbox v0.19.1
 )
 
 require (
@@ -19,7 +19,7 @@ require (
 	github.com/jcmturner/gofork v1.7.6 // indirect
 	github.com/jcmturner/gokrb5/v8 v8.4.4 // indirect
 	github.com/jcmturner/rpc/v2 v2.0.3 // indirect
-	github.com/kamalyes/go-argus v0.5.0 // indirect
+	github.com/kamalyes/go-argus v0.5.1 // indirect
 	github.com/klauspost/compress v1.19.1 // indirect
 	github.com/pierrec/lz4/v4 v4.1.27 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9 // indirect
