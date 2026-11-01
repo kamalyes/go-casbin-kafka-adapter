@@ -6,7 +6,7 @@ require (
 	github.com/IBM/sarama v1.60.1
 	github.com/kamalyes/go-casbin v0.2.4
 	github.com/kamalyes/go-logger v0.9.0
-	github.com/kamalyes/go-toolbox v0.19.1
+	github.com/kamalyes/go-toolbox v0.19.2
 )
 
 require (
